@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshansh Singh - Dev Profile</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <main>
+        <div id="professionalDiv">
+            <div class="row" id="professionalRow1">
+                <div class="col-sm">
+                    <div class="card" id="goalCard">
+                        <div class="card-body">
+                            <h4 class="card-title">Career Goals</h4>
+                            <p class="card-text">
+                                My name is Akshansh Singh, and I am pursuing a career in Information Technology. 
+                                My ultimate goal is to become an IT Director, leveraging my technical expertise and leadership skills. 
+                                I aspire to live and work in Washington, DC, contributing to innovative projects and driving technological advancements.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" id="educationCard">
+                        <div class="card-body">
+                            <h4 class="card-title">Education</h4>
+                            <p class="card-text">
+                                I am currently studying Information Technology, focusing on software development, systems analysis, and IT management. 
+                                I am passionate about learning new technologies and applying them to solve real-world problems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="professionalRow2">
+                <div class="col-sm">
+                    <div class="card" id="skillCard">
+                        <div class="card-body">
+                            <h4 class="card-title">Skills</h4>
+                            <p class="card-text">
+                                Listed below are some of the skills I have developed as an entry-level developer. 
+                                These skills are also demonstrated through my projects on GitHub.
+                            </p>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Python</td>
+                                        <td>JavaScript</td>
+                                        <td>HTML</td>
+                                        <td>CSS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bootstrap</td>
+                                        <td>Git & GitHub</td>
+                                        <td>SQL</td>
+                                        <td>React (Basic)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="https://github.com/Aksh-droid" target="_blank" class="card-link">GitHub Profile</a>
+                            <a href="https://github.com/Aksh-droid?tab=repositories" target="_blank" class="card-link">Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form for Adding New Posts -->
+        <form method="POST" action="insert/">
+            <input name="title" placeholder="Post Title">
+            <input name="post" placeholder="Post Content">
+            <button class="btn btn-primary" role="submit">New Post</button>
+        </form>
+
+        <!-- Display Existing Posts -->
+        <% profileData.forEach(result=> { %>
+            <div class="col-md-8">
+                <form method="POST" action="update/">
+                    <input name="updateTitle" value="<%= result.title %>">
+                    <input name="updatePost" value="<%= result.post %>"> 
+                    <input type="hidden" name="updateId" value="<%=result._id %>">
+                    <button class="btn btn-primary" role="submit"><i class="bi bi-pencil">Update</i></button>
+                </form>
+
+                <form method="POST" action="delete/">
+                    <input type="hidden" name="deleteId" value="<%=result._id %>">
+                    <button class="btn btn-primary" role="submit"><i class="bi bi-trash3">Delete</i></button>
+                </form>
+            </div>
+        <% }); %>
+    </main>
+
+    <!-- Scripts -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js'></script>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
